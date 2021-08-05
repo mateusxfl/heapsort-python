@@ -51,11 +51,11 @@ arquivo = open("saida.txt", "w") # Escreve a saída (resposta).
 linhas = list()
 
 linhas.append(str(totalDeNumerosNaPilha) + '\n') # Adiciona o total de números na primeira linha, assim como é solicitado o retorno.
-# print(str(totalDeNumerosNaPilha))
+print(str(totalDeNumerosNaPilha))
 
 for i in range(totalDeNumerosNaPilha): # Adiciona os demais números ordenados nas demais linhas.
     linhas.append(str(numeros[i]) + '\n')
-    # print(str(numeros[i]))
+    print(str(numeros[i]))
 
 arquivo.writelines(linhas) 
 
