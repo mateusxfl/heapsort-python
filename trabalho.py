@@ -1,26 +1,26 @@
-# Heapifica a subárvore com raiz no índice i.
-def heapify(numeros, totalDeNumerosNaPilha, i):
+# Heapifica a subárvore com raiz no índice posicaoRaiz.
+def heapify(numeros, totalDeNumerosNaPilha, posicaoRaiz):
     
-    maior = i # Inicializa o nó pai como raiz.
+    posicaoRaizAuxiliar = posicaoRaiz # Inicializa o número contido na posicaoRaiz como raiz da subárvore a ser heapificada.
 
     # Define a posição do filho esquerdo (e) e direito (d), tendo em vista que estamos representando a árvore como um array.
-    e = 2 * i + 1
-    d = 2 * i + 2 
+    e = 2 * posicaoRaiz + 1
+    d = 2 * posicaoRaiz + 2 
  
-    # Verifica se o filho esquerdo da raiz existe e é maior que a raiz.
-    if e < totalDeNumerosNaPilha and numeros[maior] < numeros[e]:
-        maior = e
+    # Verifica se o filho esquerdo existe e é maior que a raiz.
+    if e < totalDeNumerosNaPilha and numeros[posicaoRaizAuxiliar] < numeros[e]:
+        posicaoRaizAuxiliar = e
  
-    # Verifica se o filho direito da raiz existe e é maior que a raiz.
-    if d < totalDeNumerosNaPilha and numeros[maior] < numeros[d]:
-        maior = d
+    # Verifica se o filho direito existe e é maior que a raiz.
+    if d < totalDeNumerosNaPilha and numeros[posicaoRaizAuxiliar] < numeros[d]:
+        posicaoRaizAuxiliar = d
  
     # Mude a raiz, se necessário ( entra aqui caso tenha entrado em uma das duas condições anteriores ).
-    if maior != i:
-        numeros[i], numeros[maior] = numeros[maior], numeros[i]  # Faz a troca.
+    if posicaoRaizAuxiliar != posicaoRaiz:
+        numeros[posicaoRaiz], numeros[posicaoRaizAuxiliar] = numeros[posicaoRaizAuxiliar], numeros[posicaoRaiz]  # Faz a troca da raiz pelo maior de seus filhos.
  
         # Empilhe a raiz.
-        heapify(numeros, totalDeNumerosNaPilha, maior)
+        heapify(numeros, totalDeNumerosNaPilha, posicaoRaizAuxiliar)
 
 numeros = list() # Array que irei preencher com os números a serem ordenados.
 
