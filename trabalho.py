@@ -19,7 +19,7 @@ def heapify(numeros, totalDeNumerosNaPilha, posicaoRaiz):
     if posicaoRaizAuxiliar != posicaoRaiz:
         numeros[posicaoRaiz], numeros[posicaoRaizAuxiliar] = numeros[posicaoRaizAuxiliar], numeros[posicaoRaiz]  # Faz a troca da raiz pelo maior de seus filhos.
  
-        # Empilhe a raiz.
+        # Empilhe a raiz novamente ( agora com o valor filho que mudou de posição ).
         heapify(numeros, totalDeNumerosNaPilha, posicaoRaizAuxiliar)
 
 numeros = list() # Array que irei preencher com os números a serem ordenados.
@@ -28,21 +28,21 @@ entrada = open('entrada.txt','r') # Lê uma entrada TXT que contém o total de n
 
 totalDeNumerosNaPilha = int(entrada.readlines(1)[0]) # Total de números a serem ordenados.
 
-for linha in entrada: # Preenche o vetor de números a serem ordenados.
+for linha in entrada: # Preenche o vetor de números a serem ordenados ( cria o maxheap ).
     numeros.append(int(linha))
 
 entrada.close()
 
 # print(numeros) # Números a serem ordenados -----------------------------------
 
-# Ordena os números. ~> Constrói um maxheap, executando heapify apenas para os nós que possuem filhos ( começando pelo mais distante da raiz ).
+# Executa o primeiro heapify apenas para os nós que possuem filhos ( começando pelo mais distante da raiz ).
 for i in range(totalDeNumerosNaPilha//2 - 1, -1, -1):
     heapify(numeros, totalDeNumerosNaPilha, i)
 
-# Um por um extraia um elemento da pilha
+# Um por um extrai um elemento da pilha começando do ultimo elemento do maxheap.
 for i in range(totalDeNumerosNaPilha-1, 0, -1):
-    numeros[i], numeros[0] = numeros[0], numeros[i]  # Faz a troca
-    heapify(numeros, i, 0)
+    numeros[i], numeros[0] = numeros[0], numeros[i]  # Faz a troca.
+    heapify(numeros, i, 0) # Heapifica a árvore novamente partindo da raiz ( Passo i como totalDeNumeros na pilha pra nao trocar pelos que já estão corretos no final).
 
 # print(numeros) # Números já ordenados ---------------------------------------- 
 
