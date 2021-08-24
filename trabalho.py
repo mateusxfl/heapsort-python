@@ -1,8 +1,8 @@
 import sys
 
 if len(sys.argv) < 3:
-  print("Número incorreto de argumentos. Utilize nesse formato: python trabalho.py entrada.txt saida.txt")
-  sys.exit() # Encerra a execução do programa
+    print("Número incorreto de argumentos. Utilize nesse formato: python trabalho.py entrada.txt saida.txt")
+    sys.exit() # Encerra a execução do programa
   
 # Heapifica a subárvore com raiz no índice posicaoRaiz.
 def heapify(numeros, totalDeNumerosNaPilha, posicaoRaiz):
